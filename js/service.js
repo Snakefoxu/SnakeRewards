@@ -25,14 +25,14 @@ let config = {
 	search: {
 		desk: 10,
 		mob: 0,
-		min: 15,
-		max: 30,
+		min: 5,
+		max: 10,
 	},
 	schedule: {
 		desk: 0,
 		mob: 0,
-		min: 15,
-		max: 30,
+		min: 5,
+		max: 10,
 		mode: "m1",
 	},
 	device: {

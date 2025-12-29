@@ -67,7 +67,7 @@ b {
 body {
 	--scale: 1;
 	background: var(--bg);
-	height: calc(380px * var(--scale));
+	height: calc(450px * var(--scale));
 	width: calc(340px * var(--scale));
 }
 
@@ -133,7 +133,7 @@ section {
 	display: flex;
 	flex-direction: column;
 	gap: calc(10px * var(--scale));
-	height: calc(328px * var(--scale));
+	height: calc(398px * var(--scale));
 	overflow-y: auto;
 	padding: calc(12px * var(--scale));
 }

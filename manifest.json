@@ -3,7 +3,7 @@
 	"author": "SnakeDev",
 	"name": "SnakeRewards",
 	"short_name": "SR",
-	"version": "1.0.0",
+	"version": "1.0.1",
 	"description": "Automatiza búsquedas diarias de Bing para Microsoft Rewards. Sin telemetría, sin anuncios, 100% transparente.",
 	"action": {
 		"default_popup": "/popup.html",
@@ -45,6 +45,6 @@
 		"*://*.microsoft.com/*"
 	],
 	"minimum_chrome_version": "102",
-	"homepage_url": "https://github.com/yourusername/SnakeRewards",
+	"homepage_url": "https://github.com/SNAKEFOXU/SnakeRewards",
 	"offline_enabled": false
 }

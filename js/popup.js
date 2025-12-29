@@ -7,14 +7,14 @@ let config = {
 	search: {
 		desk: 10,
 		mob: 0,
-		min: 15,
-		max: 30,
+		min: 5,
+		max: 10,
 	},
 	schedule: {
 		desk: 0,
 		mob: 0,
-		min: 15,
-		max: 30,
+		min: 5,
+		max: 10,
 		mode: "m1",
 	},
 	device: {
@@ -55,13 +55,13 @@ let config = {
 const limitsMap = {
 	searchDesk: { min: 0, max: [100, 300] },
 	searchMob: { min: 0, max: [100, 300] },
-	searchMin: { min: 15, max: [60, 600] },
-	searchMax: { min: 30, max: [90, 900] },
+	searchMin: { min: 5, max: [60, 600] },
+	searchMax: { min: 10, max: [90, 900] },
 
 	scheduleDesk: { min: 0, max: [100, 300] },
 	scheduleMob: { min: 0, max: [100, 300] },
-	scheduleMin: { min: 15, max: [60, 600] },
-	scheduleMax: { min: 30, max: [90, 900] },
+	scheduleMin: { min: 5, max: [60, 600] },
+	scheduleMax: { min: 10, max: [90, 900] },
 };
 // PRO siempre activo - Sin anuncios
 const $nav = $(".nav");
@@ -366,8 +366,9 @@ $(document).ready(async function () {
 		// SnakeRewards: Simplificado - sin safeBrowsingHelper
 		config.control.consent = 1;
 		await set(config);
-		$nav.children().first().trigger("click");
 		await updateUI();
+		$nav.children().first().trigger("click");
+		$("#search").show(); // Forzar mostrar sección de búsqueda
 	});
 
 	async function createPro() {
@@ -998,7 +999,7 @@ $(document).ready(async function () {
 		const $index = $this.index();
 		if ($index > 3) {
 			chrome.windows.create({
-				url: "https://chromewebstore.google.com/detail/rewards-search-automator/eanofdhdfbcalhflpbdipkjjkoimeeod/reviews",
+				url: "https://github.com/Snakefoxu/SnakeRewards",
 				type: "popup",
 				width: screen.width * 0.7,
 				height: screen.height * 0.7,
@@ -1013,7 +1014,7 @@ $(document).ready(async function () {
 				);
 		} else {
 			chrome.windows.create({
-				url: "https://chromewebstore.google.com/detail/eanofdhdfbcalhflpbdipkjjkoimeeod/support",
+				url: "https://github.com/Snakefoxu/SnakeRewards/issues",
 				type: "popup",
 				width: screen.width * 0.7,
 				height: screen.height * 0.7,
