@@ -1,0 +1,50 @@
+{
+	"manifest_version": 3,
+	"author": "SnakeDev",
+	"name": "SnakeRewards",
+	"short_name": "SR",
+	"version": "1.0.0",
+	"description": "Automatiza búsquedas diarias de Bing para Microsoft Rewards. Sin telemetría, sin anuncios, 100% transparente.",
+	"action": {
+		"default_popup": "/popup.html",
+		"default_icon": {
+			"16": "/logo/16.png",
+			"48": "/logo/48.png",
+			"128": "/logo/128.png"
+		}
+	},
+	"icons": {
+		"16": "/logo/16.png",
+		"48": "/logo/48.png",
+		"128": "/logo/128.png"
+	},
+	"background": {
+		"service_worker": "/js/service.js",
+		"type": "module"
+	},
+	"content_scripts": [
+		{
+			"matches": [
+				"*://*.bing.com/*"
+			],
+			"js": [
+				"/js/content.js"
+			]
+		}
+	],
+	"permissions": [
+		"tabs",
+		"storage",
+		"alarms",
+		"browsingData",
+		"webNavigation",
+		"debugger"
+	],
+	"host_permissions": [
+		"*://*.bing.com/*",
+		"*://*.microsoft.com/*"
+	],
+	"minimum_chrome_version": "102",
+	"homepage_url": "https://github.com/yourusername/SnakeRewards",
+	"offline_enabled": false
+}

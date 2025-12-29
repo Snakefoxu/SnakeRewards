@@ -1,0 +1,16 @@
+# Logs
+*.log
+
+# Backups
+*_backup.*
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/
+.idea/
+
+# Internal
+.agent/

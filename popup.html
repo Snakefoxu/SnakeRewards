@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html lang="es">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>SnakeRewards</title>
+	<link rel="shortcut icon" href="/logo/128.png" type="image/x-icon" />
+	<link rel="stylesheet" href="/css/popup.css" />
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+	<link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&display=swap"
+		rel="stylesheet" />
+	<link rel="stylesheet"
+		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200" />
+	<script src="/js/helper.js"></script>
+</head>
+
+<body>
+	<header>
+		<a class="nav" title="Buscar ahora" data-open="search">Buscar</a>
+		<a class="nav" title="Programar búsquedas" data-open="schedule">Programar</a>
+		<a class="nav" title="Configuración" data-open="settings">Ajustes</a>
+	</header>
+	<main>
+		<section id="search">
+			<div class="tile">
+				<div class="input">
+					<label for="searchDesk">PC</label>
+					<input type="number" name="searchDesk" id="searchDesk" />
+				</div>
+				<div class="input">
+					<label for="searchMob">Móvil</label>
+					<input type="number" name="searchMob" id="searchMob" />
+				</div>
+				<div class="progressBar">
+					<div class="progress"></div>
+					<div class="failed"></div>
+				</div>
+			</div>
+			<div class="tile">
+				<div class="input">
+					<label for="searchMin">Mín. Delay</label>
+					<input type="number" name="searchMin" id="searchMin" />
+				</div>
+				<div class="input">
+					<label for="searchMax">Máx. Delay</label>
+					<input type="number" name="searchMax" id="searchMax" />
+				</div>
+			</div>
+			<div id="searchMode" class="mode">
+				<!-- <a class="m1" title="0 Móvil + 30 PC puntos" type="button" role="button">0 Móvil + 30 PC</a> -->
+				<!-- <a class="m2" title="30 Móvil + 60 PC puntos" type="button" role="button">30 Móvil + 60 PC</a> -->
+				<a class="m3" title="60 Móvil + 90 PC puntos" type="button" role="button">60 Móvil + 90 PC</a>
+				<a class="m4" title="120 Móvil + 180 PC puntos" type="button" role="button">120 Móvil + 180 PC</a>
+			</div>
+			<button id="searchTrigger" class="trigger" title="Iniciar/Detener Búsquedas" type="button" role="button">
+				Buscar
+			</button>
+		</section>
+		<section id="schedule">
+			<div class="tile">
+				<div class="input">
+					<label for="scheduleDesk">PC</label>
+					<input type="number" name="scheduleDesk" id="scheduleDesk" />
+				</div>
+				<div class="input">
+					<label for="scheduleMob">Móvil</label>
+					<input type="number" name="scheduleMob" id="scheduleMob" />
+				</div>
+				<div class="progressBar">
+					<div class="progress"></div>
+					<div class="failed"></div>
+				</div>
+			</div>
+			<div class="tile">
+				<div class="input">
+					<label for="scheduleMin">Mín. Delay</label>
+					<input type="number" name="scheduleMin" id="scheduleMin" />
+				</div>
+				<div class="input">
+					<label for="scheduleMax">Máx. Delay</label>
+					<input type="number" name="scheduleMax" id="scheduleMax" />
+				</div>
+			</div>
+			<div id="scheduleMode" class="mode">
+				<a class="m1" title="Programación desactivada" type="button" role="button">Manual</a>
+				<a class="m2" title="Al iniciar el navegador" type="button" role="button">Al Iniciar</a>
+				<a class="m3" title="Cada ~5 minutos (aleatorio)" type="button" role="button">Cada ~5 Min</a>
+				<a class="m4" title="Cada ~15 minutos (aleatorio)" type="button" role="button">Cada ~15 Min</a>
+			</div>
+			<button id="scheduleTrigger" class="trigger" title="Iniciar/Detener Programación" type="button"
+				role="button">
+				Programar
+			</button>
+		</section>
+		<section id="settings">
+			<div class="menuItem">
+				<label for="version">Versión:</label>
+				<input type="text" name="version" id="version" value="" readonly />
+			</div>
+			<div class="menuItem">
+				<label for="resetDevice" id="deviceName">Dispositivo Simulado</label>
+				<a id="resetDevice" title="Cambiar dispositivo de simulación">
+					<span class="material-symbols-outlined">refresh</span>
+				</a>
+			</div>
+			<div class="menuItem">
+				<label for="clear">Parche mejorado para Móvil:</label>
+				<input type="checkbox" name="clear" id="clear" />
+			</div>
+			<div class="menuItem">
+				<label for="log">Mostrar logs avanzados:</label>
+				<input type="checkbox" name="log" id="log" />
+			</div>
+			<div class="menuItem pro">
+				<label for="niche">Temática de búsqueda:</label>
+				<select name="niche" id="niche">
+					<option value="random" selected>Aleatorio</option>
+					<option value="anime">Anime</option>
+					<option value="tech">Tecnología</option>
+					<option value="travel">Viajes</option>
+					<option value="movie">Películas</option>
+					<option value="education">Educación</option>
+					<option value="music">Música</option>
+				</select>
+			</div>
+			<div class="menuItem pro">
+				<label for="activity">Realizar Actividades:</label>
+				<button id="activity" title="Realizar actividades diarias de recompensas" type="button" role="button">
+					Ejecutar
+				</button>
+				<div class="progressBar">
+					<div class="progress act"></div>
+				</div>
+			</div>
+			<div class="menuItem pro">
+				<label for="act">Auto-actividades después de buscar:</label>
+				<input type="checkbox" name="act" id="act" title="Activar/Desactivar actividades automáticas" />
+			</div>
+			<div class="menuItem pro">
+				<label for="clearBrowsingData">Limpiar datos de Bing:</label>
+				<button id="clearBrowsingData" title="Limpiar datos de navegación de Bing" type="button" role="button">
+					Limpiar
+				</button>
+			</div>
+			<div class="menuItem pro">
+				<label for="simulate">Simular pestaña:</label>
+				<button id="simulate" title="Alternar simulación de dispositivo móvil" type="button" role="button">
+					Alternar
+				</button>
+			</div>
+			<div class="menuItem pro">
+				<label for="download">Descargar historial (24h):</label>
+				<button id="download" title="Descargar historial de búsquedas" type="button" role="button">
+					Descargar
+				</button>
+			</div>
+			<div class="menuItem pro">
+				<label for="delete">Eliminar historial (24h):</label>
+				<button id="delete" title="Eliminar historial de búsquedas" type="button" role="button">
+					Eliminar
+				</button>
+			</div>
+			<div class="menuItem pro">
+				<label for="runtime">Reiniciar datos de sesión:</label>
+				<button id="runtime" title="Reiniciar datos de ejecución" type="button" role="button">
+					Reiniciar
+				</button>
+			</div>
+			<div class="menuItem pro">
+				<label for="reset">Restaurar extensión:</label>
+				<button id="reset" title="Restaurar la extensión a valores por defecto" type="button" role="button">
+					Restaurar
+				</button>
+			</div>
+			<div class="menuItem">
+				<label for="consent">Términos de uso:</label>
+				<button id="consent" type="button" title="Ver términos y condiciones" role="button">
+					Ver
+				</button>
+			</div>
+		</section>
+		<section id="consentForm">
+			<h2>
+				Al usar esta extensión, aceptas lo siguiente:
+			</h2>
+			<ul>
+				<li>
+					Esta extensión automatiza búsquedas en Bing
+					<b>solo cuando tú lo activas manualmente o lo programas</b>.
+				</li>
+				<li>
+					Esta extensión es una herramienta independiente y
+					<b>no está afiliada con Microsoft ni Bing</b>.
+				</li>
+				<li>
+					Usar herramientas de automatización en servicios de terceros
+					<b>puede violar sus términos de uso</b>. Eres el único responsable
+					de las acciones realizadas.
+				</li>
+				<li>
+					Esta extensión es <b>solo para uso personal y educativo</b>.
+					El mal uso no está soportado.
+				</li>
+				<li>
+					Usa esta extensión bajo tu propia responsabilidad.
+				</li>
+			</ul>
+			<p>
+				Si no estás de acuerdo, no uses la extensión.
+			</p>
+			<button id="accept" role="button" type="button" title="Aceptar términos" class="trigger">
+				Aceptar y Continuar
+			</button>
+		</section>
+	</main>
+	<footer>
+		<div id="rating">
+			SnakeRewards v1.0
+			<span class="material-symbols-outlined">verified</span>
+		</div>
+	</footer>
+	<script src="/js/popup.js" type="module"></script>
+</body>
+
+</html>
