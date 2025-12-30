@@ -143,7 +143,7 @@ function compare() {
 		m1: { desk: 10, mob: 0 },
 		m2: { desk: 20, mob: 10 },
 		m3: { desk: 30, mob: 20 },
-		m4: { desk: 50, mob: 30 },
+		m4: { desk: 60, mob: 40 },
 	};
 	for (const [id, val] of Object.entries(modeMap)) {
 		if (desk === val.desk && mob === val.mob) {
@@ -464,7 +464,7 @@ $(document).ready(async function () {
 			m1: { desk: 10, mob: 0 },
 			m2: { desk: 20, mob: 10 },
 			m3: { desk: 30, mob: 20 },
-			m4: { desk: 50, mob: 30 },
+			m4: { desk: 60, mob: 40 },
 		};
 		if (modeMap[mode]) {
 			config.search.desk = modeMap[mode].desk;

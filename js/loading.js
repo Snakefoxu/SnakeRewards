@@ -4,7 +4,7 @@ const urlParams = new URLSearchParams(window.location.search);
 const type = urlParams.get("type");
 const map = {
 	clear: {
-		h1: "Applying Patch (Enhanced v1.5.8)",
+		h1: "Loading AI searches with anti-detection patch",
 		h2: "Please wait while we apply the patch. Avoid using any Microsoft services during while using this setting.",
 	},
 	attach: {
