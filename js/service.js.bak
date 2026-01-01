@@ -1,11 +1,7 @@
 // SnakeRewards - Service Worker
 // Sin telemetría, sin anuncios, 100% transparente
 import { queries } from "/js/queries.js";
-import { queriesExtension } from "/js/queriesExtension.js";
 import { log, set, get, resetRuntime, verify } from "/js/utils.js";
-
-// Fusionar queries originales con extensión
-const allQueries = { ...queries, ...queriesExtension };
 const bing = "https://www.bing.com/";
 const rewards = "https://rewards.bing.com/";
 const rewardsFlyout =
@@ -29,14 +25,14 @@ let config = {
 	search: {
 		desk: 10,
 		mob: 0,
-		min: 10,
-		max: 30,
+		min: 5,
+		max: 10,
 	},
 	schedule: {
 		desk: 0,
 		mob: 0,
-		min: 10,
-		max: 30,
+		min: 5,
+		max: 10,
 		mode: "m1",
 	},
 	device: {
@@ -72,20 +68,10 @@ let config = {
 let logs = config?.control?.log;
 let needPatch = false;
 let searchQuery = "";
-let shortestDelay = 2000;
-let mediumDelay = 5000;
-let longestDelay = 8000;
+let shortestDelay = 1000;
+let mediumDelay = 3000;
+let longestDelay = 5000;
 let alive;
-
-// Distribución gaussiana para delays más naturales (anti-detección)
-function gaussianRandom(min, max) {
-	let u = 0, v = 0;
-	while (u === 0) u = Math.random();
-	while (v === 0) v = Math.random();
-	let num = Math.sqrt(-2.0 * Math.log(u)) * Math.cos(2.0 * Math.PI * v);
-	num = (num + 3) / 6; // Normalizar a 0-1
-	return Math.floor(min + num * (max - min));
-}
 async function delay(ms, interruptible = true) {
 	if (ms > 1000) {
 		logs &&
@@ -527,8 +513,8 @@ async function simulate(tabId, interruptible = true) {
 		const deviceMetrics = {
 			mobile: true,
 			fitWindow: true,
-			width: config.device.w + Math.floor(Math.random() * 10) - 5,
-			height: config.device.h + Math.floor(Math.random() * 10) - 5,
+			width: config.device.w,
+			height: config.device.h,
 			deviceScaleFactor: config.device.scale,
 		};
 
@@ -613,24 +599,6 @@ async function simulate(tabId, interruptible = true) {
 				"success",
 			);
 		await delay(shortestDelay, interruptible);
-
-		// Anti-fingerprint: ocultar navigator.webdriver
-		try {
-			const antiFingerprint = `
-				Object.defineProperty(navigator, 'webdriver', { get: () => undefined });
-				delete window.cdc_adoQpoasnfa76pfcZLmcfl_Array;
-				delete window.cdc_adoQpoasnfa76pfcZLmcfl_Promise;
-				delete window.cdc_adoQpoasnfa76pfcZLmcfl_Symbol;
-			`;
-			await chrome.debugger.sendCommand(
-				{ tabId },
-				"Page.addScriptToEvaluateOnNewDocument",
-				{ source: antiFingerprint }
-			);
-			logs && log(`[SIMULATE] - Anti-fingerprint script injected for tab ${tabId}.`, "success");
-		} catch (afError) {
-			logs && log(`[SIMULATE] - Anti-fingerprint injection failed: ${afError.message}`, "warning");
-		}
 		logs &&
 			log(
 				`[SIMULATE] - Done for ${tabId} using device ${config.device.name}`,
@@ -1104,14 +1072,14 @@ async function query(interruptible = true) {
 			"update",
 		);
 	let niche = config?.control?.niche || "random";
-	const categories = Object.keys(allQueries);
+	const categories = Object.keys(queries);
 	if (niche === "random") {
 		niche =
 			categories[
 			Math.floor(Math.random() * categories.length)
 			];
 	}
-	let queryList = allQueries[niche];
+	let queryList = queries[niche];
 	searchQuery = queryList[Math.floor(Math.random() * queryList.length)];
 	const currentYear = new Date().getFullYear();
 	searchQuery = searchQuery
@@ -1152,7 +1120,6 @@ async function query(interruptible = true) {
 			`Failed to clear search input for tab ${tabId} within timeout.`,
 		);
 		await delay(shortestDelay, interruptible);
-		let charIndex = 0;
 		for (const char of searchQuery) {
 			if (!config?.runtime?.running) {
 				logs &&
@@ -1173,31 +1140,7 @@ async function query(interruptible = true) {
 				shortestDelay,
 				`Failed to insert text for tab ${tabId} within timeout.`,
 			);
-
-			// === TYPING 100% HUMANO ===
-			const prevChar = charIndex > 0 ? searchQuery[charIndex - 1] : '';
-			const isWordStart = charIndex === 0 || prevChar === ' ';
-			const isWordEnd = ' .,:;!?'.includes(char);
-
-			let typingDelay;
-			if (isWordStart) {
-				// Inicio de palabra: más lento (pensando)
-				typingDelay = gaussianRandom(180, 400);
-			} else if (isWordEnd) {
-				// Fin de palabra/puntuación: pausa larga
-				typingDelay = gaussianRandom(250, 600);
-			} else {
-				// Mitad de palabra: más rápido con variación
-				typingDelay = gaussianRandom(60, 200);
-			}
-
-			// Micro-pausas aleatorias "pensando" (5% probabilidad)
-			if (Math.random() < 0.05) {
-				typingDelay += gaussianRandom(400, 1000);
-			}
-
-			await delay(typingDelay, interruptible);
-			charIndex++;
+			await delay(80 + Math.random() * 120, interruptible);
 		}
 		logs &&
 			log(

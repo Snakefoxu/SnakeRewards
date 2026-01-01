@@ -7,14 +7,14 @@ let config = {
 	search: {
 		desk: 10,
 		mob: 0,
-		min: 10,
-		max: 30,
+		min: 5,
+		max: 10,
 	},
 	schedule: {
 		desk: 0,
 		mob: 0,
-		min: 10,
-		max: 30,
+		min: 5,
+		max: 10,
 		mode: "m1",
 	},
 	device: {
@@ -55,13 +55,13 @@ let config = {
 const limitsMap = {
 	searchDesk: { min: 0, max: [100, 300] },
 	searchMob: { min: 0, max: [100, 300] },
-	searchMin: { min: 10, max: [40, 600] },
-	searchMax: { min: 15, max: [60, 900] },
+	searchMin: { min: 5, max: [60, 600] },
+	searchMax: { min: 10, max: [90, 900] },
 
 	scheduleDesk: { min: 0, max: [100, 300] },
 	scheduleMob: { min: 0, max: [100, 300] },
-	scheduleMin: { min: 10, max: [40, 600] },
-	scheduleMax: { min: 15, max: [60, 900] },
+	scheduleMin: { min: 5, max: [60, 600] },
+	scheduleMax: { min: 10, max: [90, 900] },
 };
 // PRO siempre activo - Sin anuncios
 const $nav = $(".nav");

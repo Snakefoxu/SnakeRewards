@@ -84,29 +84,14 @@ chrome.runtime.onMessage.addListener((request, sender, sendResponse) => {
 						input.value = "";
 						for (const char of request.query) {
 							input.value += char;
-							// === TYPING 100% HUMANO ===
-							// Velocidad base variable (más lento al inicio de palabra)
-							const isWordStart = input.value.length === 1 || input.value.slice(-2, -1) === ' ';
-							const isWordEnd = ' .,:;!?'.includes(char);
-
-							let typingDelay;
-							if (isWordStart) {
-								// Inicio de palabra: más lento (pensando)
-								typingDelay = 180 + Math.floor(Math.random() * 220);
-							} else if (isWordEnd) {
-								// Fin de palabra/puntuación: pausa larga
-								typingDelay = 250 + Math.floor(Math.random() * 350);
-							} else {
-								// Mitad de palabra: más rápido con variación
-								typingDelay = 60 + Math.floor(Math.random() * 140);
-							}
-
-							// Micro-pausas aleatorias "pensando" (5% probabilidad)
-							if (Math.random() < 0.05) {
-								typingDelay += 400 + Math.floor(Math.random() * 600);
-							}
-
-							await delay(typingDelay, true);
+							await delay(
+								50 +
+								Math.floor(
+									Math.random() *
+									50,
+								),
+								true,
+							);
 						}
 					} else {
 						sendResponse({ success: true });
