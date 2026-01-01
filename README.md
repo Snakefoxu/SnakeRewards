@@ -1,6 +1,7 @@
 # 🐍 SnakeRewards
 
 ![Version](https://img.shields.io/badge/version-1.0.2-green?style=flat-square)
+![Downloads](https://img.shields.io/github/downloads/Snakefoxu/SnakeRewards/total?style=flat-square&color=blue)
 ![Chrome](https://img.shields.io/badge/Chrome-Extension-blue?style=flat-square&logo=googlechrome)
 ![License](https://img.shields.io/badge/license-MIT-orange?style=flat-square)
 ![PRO](https://img.shields.io/badge/PRO-Unlocked-gold?style=flat-square)
