@@ -86,6 +86,39 @@ Esta extensión es solo para **uso personal y educativo**. El uso de herramienta
 
 ---
 
+## 🔒 Seguridad y Permisos
+
+### Permiso `debugger`
+
+Esta extensión requiere el permiso `debugger` de Chrome. Aquí explicamos por qué:
+
+| ¿Para qué se usa? | Detalle |
+|-------------------|---------|
+| **Simular typing humano** | Inyecta eventos de teclado realistas vía Chrome DevTools Protocol |
+| **Evitar detección** | Los eventos simulados son indistinguibles de acciones reales |
+| **Control preciso** | Permite delays y pausas naturales entre caracteres |
+
+### ⚠️ Implicaciones de Seguridad
+
+> **IMPORTANTE:** El permiso `debugger` es muy poderoso. Esta extensión:
+> - ✅ SOLO interactúa con páginas de `*.bing.com` y `*.microsoft.com`
+> - ✅ NO recolecta datos personales ni telemetría
+> - ✅ Código 100% open source para auditoría
+> - ❌ NO accede a otras pestañas ni páginas
+
+### Otros Permisos
+
+| Permiso | Uso |
+|---------|-----|
+| `tabs` | Abrir/cerrar pestañas de búsqueda |
+| `storage` | Guardar configuración localmente |
+| `alarms` | Programar búsquedas automáticas |
+| `browsingData` | Limpiar cookies de sesión (opcional) |
+| `webNavigation` | Detectar carga de páginas |
+
+---
+
+
 ## 📜 Changelog
 
 Ver [CHANGELOG.md](CHANGELOG.md) para historial completo.
