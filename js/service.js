@@ -2023,6 +2023,7 @@ chrome.runtime.onInstalled.addListener(async (details) => {
 		config.runtime.act = 0;
 		config.runtime.running = 0;
 		config.control.consent = false;
+		config.control.clear = 1;
 		await set(config);
 	}
 });
@@ -2046,6 +2047,7 @@ chrome.runtime.onStartup.addListener(async () => {
 	if (stored) {
 		Object.assign(config, stored);
 	}
+	config.control.clear = 1;
 	log(`[STARTUP] - Extension started.`, "success");
 	if (config?.control?.consent && config?.pro?.key) {
 		await reverify();
