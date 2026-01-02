@@ -2,6 +2,22 @@
 
 Todos los cambios notables de este proyecto se documentan en este archivo.
 
+## [1.0.3] - 2026-01-02
+
+### 🔧 Corrección Crítica
+- **Fix búsquedas móviles**: Restaurada funcionalidad del parche de recuperación
+- `cookies: true` en función `clear()` - necesario para el parche
+- `config.control.clear = 1` forzado en startup/update
+- Botón "Limpiar datos de Bing" eliminado del UI (evita logout accidental)
+
+### 📁 Archivos Modificados
+- `js/service.js` - Parche móvil restaurado
+- `js/popup.js` - Config clear:1, botón eliminado
+- `popup.html` - Botón limpiar eliminado
+- `manifest.json` - Versión 1.0.3
+
+---
+
 ## [1.0.2] - 2026-01-01
 
 ### 🛡️ Mejoras Anti-Detección

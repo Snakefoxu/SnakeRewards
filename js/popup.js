@@ -115,7 +115,7 @@ const $pro = $("#pro");
 const $niche = $("#niche");
 const $activity = $("#activity");
 const $act = $("#act");
-const $clearBrowsingData = $("#clearBrowsingData");
+
 const $simulate = $("#simulate");
 const $download = $("#download");
 const $delete = $("#delete");
@@ -809,28 +809,7 @@ $(document).ready(async function () {
 				"update",
 			);
 	});
-	$clearBrowsingData.on("click", async function () {
-		if (!config?.pro?.key) {
-			chrome.tabs.create({
-				url: pro,
-				active: true,
-			});
-			return log(
-				"[CLEAR BROWSING DATA] - Pro membership required for this feature.",
-				"error",
-			);
-		}
-		const $btnText = $(this).text();
-		const response = await chrome.runtime.sendMessage({
-			action: "clearBrowsingData",
-		});
-		await flashStatus($(this), $btnText, response);
-		logs &&
-			log(
-				`[CLEAR BROWSING DATA] - Data cleared: ${response}`,
-				"update",
-			);
-	});
+
 	$simulate.on("click", async function () {
 		if (!config?.pro?.key) {
 			chrome.tabs.create({
