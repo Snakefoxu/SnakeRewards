@@ -1,5 +1,7 @@
 # 🐍 SnakeRewards
 
+🌐 **Language / Idioma:** **English** | [Español](README_ES.md)
+
 ![Version](https://img.shields.io/badge/version-1.0.2-green?style=flat-square)
 ![Downloads](https://img.shields.io/github/downloads/Snakefoxu/SnakeRewards/total?style=flat-square&color=blue)
 ![Chrome](https://img.shields.io/badge/Chrome-Extension-blue?style=flat-square&logo=googlechrome)
@@ -7,127 +9,126 @@
 ![PRO](https://img.shields.io/badge/PRO-Unlocked-gold?style=flat-square)
 ![Telemetry](https://img.shields.io/badge/telemetry-none-red?style=flat-square)
 
-Extensión de Chrome para automatizar búsquedas en Bing y ganar puntos de Microsoft Rewards.
+Chrome extension to automate Bing searches and earn Microsoft Rewards points.
 
 ---
 
-## 🆕 Novedades v1.0.2
+## 🆕 What's New in v1.0.2
 
-> **Anti-Detección + Diccionario Ampliado**
+> **Anti-Detection + Extended Dictionary**
 
-### 🛡️ Anti-Detección
-- **Delays humanos**: 10-30s con distribución gaussiana
-- **Typing 100% humano**: Velocidad variable, micro-pausas
-- **Anti-fingerprint**: `navigator.webdriver` oculto, viewport ±5px
+### 🛡️ Anti-Detection
+- **Human-like delays**: 10-30s with Gaussian distribution
+- **100% human typing**: Variable speed, micro-pauses
+- **Anti-fingerprint**: Hidden `navigator.webdriver`, viewport ±5px
 
-### � Diccionario Ampliado
-- **+400 búsquedas nuevas** en 6 categorías
-- Nuevas: `gaming`, `sports`, `cooking`, `health`, `news`, `spanish`
+### 📚 Extended Dictionary
+- **+400 new searches** across 6 categories
+- New categories: `gaming`, `sports`, `cooking`, `health`, `news`, `spanish`
 
 ---
 
-## ✨ Características
+## ✨ Features
 
-| Feature | Descripción |
+| Feature | Description |
 |---------|-------------|
-| 🖥️ **PC + Móvil** | Simula ambos tipos de dispositivos |
-| ⏰ **Programación** | Búsquedas automáticas programadas |
-| 🎯 **Actividades** | Completa tareas diarias auto |
-| 🛡️ **Anti-Detección** | Delays y typing humanos |
-| � **13 Categorías** | Diccionario variado de búsquedas |
-| � **Sin Telemetría** | 100% privado, sin anuncios |
+| 🖥️ **PC + Mobile** | Simulates both device types |
+| ⏰ **Scheduling** | Automatic scheduled searches |
+| 🎯 **Activities** | Auto-completes daily tasks |
+| 🛡️ **Anti-Detection** | Human-like delays and typing |
+| 📚 **13 Categories** | Varied search dictionary |
+| 🔒 **No Telemetry** | 100% private, no ads |
 
 ---
 
-## 🚀 Instalación
+## 🚀 Installation
 
-1. Descarga la [última release](https://github.com/Snakefoxu/SnakeRewards/releases/latest)
-2. Descomprime el ZIP
-3. Abre `chrome://extensions/`
-4. Activa **Modo desarrollador**
-5. Clic en **Cargar descomprimida**
-6. Selecciona la carpeta
+1. Download the [latest release](https://github.com/Snakefoxu/SnakeRewards/releases/latest)
+2. Extract the ZIP
+3. Open `chrome://extensions/`
+4. Enable **Developer mode**
+5. Click **Load unpacked**
+6. Select the folder
 
 ---
 
-## ⚙️ Configuración
+## ⚙️ Configuration
 
-| Opción | Descripción | Default |
+| Option | Description | Default |
 |--------|-------------|---------|
-| PC | Búsquedas escritorio | 10 |
-| Móvil | Búsquedas móviles | 0 |
-| Mín Delay | Tiempo mínimo (s) | 10 |
-| Máx Delay | Tiempo máximo (s) | 30 |
-| Categoría | Nicho de búsquedas | random |
+| PC | Desktop searches | 10 |
+| Mobile | Mobile searches | 0 |
+| Min Delay | Minimum time (s) | 10 |
+| Max Delay | Maximum time (s) | 30 |
+| Category | Search niche | random |
 
 ---
 
-## 📁 Estructura
+## 📁 Structure
 
 ```
 SnakeRewards/
-├── css/              # Estilos (tema esmeralda)
+├── css/              # Styles (emerald theme)
 ├── js/
-│   ├── service.js    # Service Worker principal
-│   ├── content.js    # Script de contenido
-│   ├── popup.js      # Lógica UI
-│   ├── queries.js    # Diccionario original
-│   └── queriesExtension.js  # +400 queries nuevas
-├── logo/             # Iconos personalizados
-├── manifest.json     # Configuración v3
-└── popup.html        # Interfaz principal
+│   ├── service.js    # Main Service Worker
+│   ├── content.js    # Content script
+│   ├── popup.js      # UI logic
+│   ├── queries.js    # Original dictionary
+│   └── queriesExtension.js  # +400 new queries
+├── logo/             # Custom icons
+├── manifest.json     # v3 configuration
+└── popup.html        # Main interface
 ```
 
 ---
 
-## ⚠️ Aviso Legal
+## ⚠️ Legal Notice
 
-Esta extensión es solo para **uso personal y educativo**. El uso de herramientas de automatización puede violar los términos de servicio de Microsoft. Úsala bajo tu propia responsabilidad.
-
----
-
-## 🔒 Seguridad y Permisos
-
-### Permiso `debugger`
-
-Esta extensión requiere el permiso `debugger` de Chrome. Aquí explicamos por qué:
-
-| ¿Para qué se usa? | Detalle |
-|-------------------|---------|
-| **Simular typing humano** | Inyecta eventos de teclado realistas vía Chrome DevTools Protocol |
-| **Evitar detección** | Los eventos simulados son indistinguibles de acciones reales |
-| **Control preciso** | Permite delays y pausas naturales entre caracteres |
-
-### ⚠️ Implicaciones de Seguridad
-
-> **IMPORTANTE:** El permiso `debugger` es muy poderoso. Esta extensión:
-> - ✅ SOLO interactúa con páginas de `*.bing.com` y `*.microsoft.com`
-> - ✅ NO recolecta datos personales ni telemetría
-> - ✅ Código 100% open source para auditoría
-> - ❌ NO accede a otras pestañas ni páginas
-
-### Otros Permisos
-
-| Permiso | Uso |
-|---------|-----|
-| `tabs` | Abrir/cerrar pestañas de búsqueda |
-| `storage` | Guardar configuración localmente |
-| `alarms` | Programar búsquedas automáticas |
-| `browsingData` | Limpiar cookies de sesión (opcional) |
-| `webNavigation` | Detectar carga de páginas |
+This extension is for **personal and educational use only**. Using automation tools may violate Microsoft's Terms of Service. Use at your own risk.
 
 ---
 
+## 🔒 Security & Permissions
+
+### `debugger` Permission
+
+This extension requires Chrome's `debugger` permission. Here's why:
+
+| Purpose | Details |
+|---------|---------|
+| **Human-like typing simulation** | Injects realistic keyboard events via Chrome DevTools Protocol |
+| **Detection evasion** | Simulated events are indistinguishable from real actions |
+| **Precise control** | Enables natural delays and pauses between characters |
+
+### ⚠️ Security Implications
+
+> **IMPORTANT:** The `debugger` permission is very powerful. This extension:
+> - ✅ ONLY interacts with `*.bing.com` and `*.microsoft.com` pages
+> - ✅ Does NOT collect personal data or telemetry
+> - ✅ 100% open source code for auditing
+> - ❌ Does NOT access other tabs or pages
+
+### Other Permissions
+
+| Permission | Usage |
+|------------|-------|
+| `tabs` | Open/close search tabs |
+| `storage` | Save configuration locally |
+| `alarms` | Schedule automatic searches |
+| `browsingData` | Clear session cookies (optional) |
+| `webNavigation` | Detect page loads |
+
+---
 
 ## 📜 Changelog
 
-Ver [CHANGELOG.md](CHANGELOG.md) para historial completo.
+See [CHANGELOG.md](CHANGELOG.md) for full history.
 
 ---
 
-## 📜 Licencia
+## 📜 License
 
-MIT License - Uso libre
+MIT License - Free to use
 
 ---
 
